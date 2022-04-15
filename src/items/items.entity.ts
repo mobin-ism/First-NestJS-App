@@ -15,7 +15,7 @@ export class ItemsEntity extends BaseEntity {
     item_name: string;
 
     @Column({
-        type: "int"
+        type: "varchar"
     })
 
     item_description: string;
