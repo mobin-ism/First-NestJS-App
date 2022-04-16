@@ -8,8 +8,6 @@ export class Brand {
   @Column()
   brand_name: string;
 
-  @Column({
-    default: false,
-  })
-  brand_is_popular: boolean;
+  @Column('boolean', {default: true})
+  brand_is_popular: boolean = true;
 }
