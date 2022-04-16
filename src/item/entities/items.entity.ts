@@ -7,7 +7,7 @@ import {
 } from 'typeorm';
 
 @Entity('items')
-export class ItemsEntity extends BaseEntity {
+export class Item extends BaseEntity {
   @PrimaryGeneratedColumn({
     comment: 'This is the primary key of items table',
   })

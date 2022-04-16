@@ -1,43 +1,72 @@
-import { Body, Controller, Get, Post, Put, Param, Delete } from '@nestjs/common';
-import { ItemCreateDTO } from './dto/items.create.dto';
+import {
+  Body,
+  Controller,
+  Get,
+  Post,
+  Put,
+  Param,
+  Delete,
+} from '@nestjs/common';
+import { ItemDTO } from './dto/items.create.dto';
 import { ItemsInterface } from './items.interface';
 import { ItemService } from './items.service';
-import { ItemsEntity } from './items.entity';
+import { Item } from './entities/items.entity';
 
 @Controller('items')
 export class ItemsController implements ItemsInterface {
   constructor(private itemService: ItemService) {}
 
+  /**
+   * GETTING ALL THE ITEMS
+   */
   @Get()
-  getAll() : Promise<ItemsEntity[]> {
+  getAll(): Promise<Item[]> {
     return this.itemService.getALL();
   }
 
+  /**
+   * GETTING A SINGLE ITEM
+   */
   @Get('/:id')
-  getOneById(@Param() param) : Promise<ItemsEntity> {
+  getOneById(@Param() param): Promise<Item> {
     return this.itemService.getOneById(param.id);
   }
 
+  /**
+   * CREATING A SINGLE ITEM
+   */
   @Post()
-  async create(@Body() createItemData: ItemCreateDTO) {
+  async create(@Body() createItemData: ItemDTO) {
     return await this.itemService.create(createItemData);
   }
 
+  /**
+   * EDITING A SINGLE ITEM
+   */
   @Put()
-  Edit(@Body() updateItemData: ItemCreateDTO) : Promise<ItemsEntity> {
+  Edit(@Body() updateItemData: ItemDTO): Promise<Item> {
     return this.itemService.updateItem(updateItemData);
   }
 
+  /**
+   * UPDATING AN ITEM
+   */
   @Get('/:id/:name')
   findOne(@Param() param): string {
     return `Id is ${param.id} Name is ${param.name}`;
   }
 
+  /**
+   * DELETING AN ITEM
+   */
   @Delete('/:id')
-  delete(@Param() param) : Promise<ItemsEntity> {
+  delete(@Param() param): Promise<Item> {
     return this.itemService.deleteItem(param.id);
   }
 
+  /**
+   * IMPLEMENTING INTERFACE METHOD AS TESTING
+   */
   displayItems(): string {
     return 'displaying';
   }
