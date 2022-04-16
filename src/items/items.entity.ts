@@ -1,29 +1,30 @@
-import { BaseEntity, Column, Double, Entity, PrimaryGeneratedColumn } from "typeorm";
+import {
+  BaseEntity,
+  Column,
+  Double,
+  Entity,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
 
 @Entity('items')
 export class ItemsEntity extends BaseEntity {
-    @PrimaryGeneratedColumn({
-        comment : "This is the primary key of items table"
-    })
+  @PrimaryGeneratedColumn({
+    comment: 'This is the primary key of items table',
+  })
+  item_id: number;
 
-    item_id : number;
+  @Column({
+    type: 'varchar',
+  })
+  item_name: string;
 
-    @Column({
-        type : 'varchar'
-    })
+  @Column({
+    type: 'varchar',
+  })
+  item_description: string;
 
-    item_name: string;
-
-    @Column({
-        type: "varchar"
-    })
-
-    item_description: string;
-
-    @Column({
-        type: "int"
-    })
-
-    item_quantity: number;
-
+  @Column({
+    type: 'int',
+  })
+  item_quantity: number;
 }

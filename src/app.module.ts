@@ -5,10 +5,6 @@ import { ItemsModule } from './items/items.module';
 import { ShopsModule } from './shops/shops.module';
 
 @Module({
-  imports: [
-    TypeOrmModule.forRoot(typeORMConfig),
-    ItemsModule,
-    ShopsModule
-  ]
+  imports: [TypeOrmModule.forRoot(typeORMConfig), ItemsModule, ShopsModule],
 })
 export class AppModule {}

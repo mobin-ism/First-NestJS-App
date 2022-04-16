@@ -1,4 +1,4 @@
 export interface ItemsInterface {
-    displayItems() : string;
-    sellItems() : string;
+  displayItems(): string;
+  sellItems(): string;
 }
