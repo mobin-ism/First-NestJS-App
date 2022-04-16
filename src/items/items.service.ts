@@ -16,7 +16,9 @@ export class ItemService {
    * @return  {<Promise><ItemsEntity>[]}
    */
   getALL(): Promise<Item[]> {
-    return this.itemsRepository.find();
+    return this.itemsRepository.find({
+      relations : ['item_brand_id']
+    });
   }
 
   /**
@@ -41,8 +43,8 @@ export class ItemService {
    *
    * @return  {<items>}
    */
-  async create(items: ItemDTO) {
-    return await this.itemsRepository.save(items);
+  create(createItemData : ItemDTO) : Promise<Item>{
+    return this.itemsRepository.save(createItemData);
   }
 
   /**

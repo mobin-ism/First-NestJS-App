@@ -36,8 +36,8 @@ export class ItemsController implements ItemsInterface {
    * CREATING A SINGLE ITEM
    */
   @Post()
-  async create(@Body() createItemData: ItemDTO) {
-    return await this.itemService.create(createItemData);
+  create(@Body() createItemData: ItemDTO) : Promise<Item> {
+    return this.itemService.create(createItemData);
   }
 
   /**

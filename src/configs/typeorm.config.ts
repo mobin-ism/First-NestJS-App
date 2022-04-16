@@ -1,5 +1,5 @@
 import { TypeOrmModuleOptions } from '@nestjs/typeorm';
-import { Item } from '../item/entities/items.entity';
+import { Item } from '../items/entities/items.entity';
 import { Brand } from '../brands/entities/brand.entity';
 
 export const typeORMConfig: TypeOrmModuleOptions = {

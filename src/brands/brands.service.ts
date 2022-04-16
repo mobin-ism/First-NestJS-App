@@ -15,7 +15,9 @@ export class BrandsService {
   }
 
   findAll() : Promise<Brand[]> {
-    return this.brandReposity.find();
+    return this.brandReposity.find({
+      relations : ['items']
+    });
   }
 
   findOne(id: number) : Promise<Brand>{

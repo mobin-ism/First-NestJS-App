@@ -1,8 +1,10 @@
+import { Brand } from 'src/brands/entities/brand.entity';
 import {
   BaseEntity,
   Column,
   Double,
   Entity,
+  ManyToOne,
   PrimaryGeneratedColumn,
 } from 'typeorm';
 
@@ -27,4 +29,8 @@ export class Item extends BaseEntity {
     type: 'int',
   })
   item_quantity: number;
+
+
+  @ManyToOne(type => Brand, brand => brand.brand_id)
+  item_brand_id : Brand
 }
