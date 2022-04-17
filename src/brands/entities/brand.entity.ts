@@ -9,9 +9,9 @@ export class Brand {
   @Column()
   brand_name: string;
 
-  @Column('boolean', {default: true})
+  @Column('boolean', { default: true })
   brand_is_popular: boolean = true;
 
-  @OneToMany(type => Item, item => item.item_brand_id)
-  items : Item[]
+  @OneToMany((type) => Item, (item) => item.item_brand_id)
+  items: Item[];
 }

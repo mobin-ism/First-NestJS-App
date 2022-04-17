@@ -7,20 +7,21 @@ import { BrandReposity } from './repository/brand.repository';
 
 @Injectable()
 export class BrandsService {
+  constructor(
+    @InjectRepository(BrandReposity) private brandReposity: BrandReposity,
+  ) {}
 
-  constructor(@InjectRepository(BrandReposity) private brandReposity : BrandReposity) {}
-
-  create(createBrandDto: CreateBrandDto) : Promise<Brand> {
+  create(createBrandDto: CreateBrandDto): Promise<Brand> {
     return this.brandReposity.save(createBrandDto);
   }
 
-  findAll() : Promise<Brand[]> {
+  findAll(): Promise<Brand[]> {
     return this.brandReposity.find({
-      relations : ['items']
+      relations: ['items'],
     });
   }
 
-  findOne(id: number) : Promise<Brand>{
+  findOne(id: number): Promise<Brand> {
     try {
       return this.brandReposity.findOneOrFail(id);
     } catch (error) {
@@ -28,18 +29,18 @@ export class BrandsService {
     }
   }
 
-  update(id: number, updateBrandDto: UpdateBrandDto) : Promise<Brand> {
+  update(id: number, updateBrandDto: UpdateBrandDto): Promise<Brand> {
     const prevData = this.findOne(id);
-    if(prevData){
+    if (prevData) {
       this.brandReposity.update(id, updateBrandDto);
     }
 
     return prevData;
   }
 
-  remove(id: number) : Promise<Brand> {
+  remove(id: number): Promise<Brand> {
     const prevData = this.findOne(id);
-    if(prevData){
+    if (prevData) {
       this.brandReposity.delete(id);
     }
 
