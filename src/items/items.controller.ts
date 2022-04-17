@@ -36,7 +36,7 @@ export class ItemsController implements ItemsInterface {
    * CREATING A SINGLE ITEM
    */
   @Post()
-  create(@Body() createItemData: ItemDTO) : Promise<Item> {
+  create(@Body() createItemData: ItemDTO): Promise<Item> {
     return this.itemService.create(createItemData);
   }
 

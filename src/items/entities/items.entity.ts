@@ -30,7 +30,6 @@ export class Item extends BaseEntity {
   })
   item_quantity: number;
 
-
-  @ManyToOne(type => Brand, brand => brand.brand_id)
-  item_brand_id : Brand
+  @ManyToOne((type) => Brand, (brand) => brand.brand_id)
+  item_brand_id: Brand;
 }
